@@ -1,0 +1,67 @@
+/* === MOBILE FIRST (default) === */
+.header-toolbar {
+  padding: 0 16px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.site-title {
+  text-transform: uppercase;
+}
+.spacer { flex: 1 1 auto; }
+
+/* Links nav visibles SOLO en desktop, ocultos en mobile */
+.nav-links {
+  display: none;
+}
+
+/* Botón hamburguesa SIEMPRE visible en mobile */
+.mat-icon-button {
+  margin-left: 8px;
+}
+
+/* Sidenav styling para mobile */
+.mat-sidenav {
+  width: 220px;
+  background: #fff;
+  padding-top: 32px;
+}
+.mat-sidenav button {
+  width: 100%;
+  text-align: left;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.mat-sidenav-container {
+  min-height: 100vh;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* === DESKTOP/TABLET (min-width: 600px) === */
+@media (min-width: 600px) {
+  .header-toolbar {
+    padding: 0 32px;
+    min-height: 64px;
+  }
+  .logo {
+    font-size: 1.3rem;
+  }
+  .nav-links {
+    display: inline-flex !important;
+    gap: 8px;
+  }
+  /* Oculta hamburguesa en desktop */
+  .mat-icon-button {
+    display: none !important;
+  }
+  /* Oculta el sidenav en desktop */
+  .mat-sidenav-container {
+    display: none !important;
+  }
+}
