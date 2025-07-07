@@ -1,12 +1,12 @@
 import {
+  coerceBooleanProperty
+} from "./chunk-AGZFHLKA.js";
+import {
   CdkScrollable,
   CdkScrollableModule,
   ScrollDispatcher,
   ViewportRuler
 } from "./chunk-4NTMRUOR.js";
-import {
-  coerceBooleanProperty
-} from "./chunk-AGZFHLKA.js";
 import "./chunk-7KHYC4J7.js";
 import "./chunk-2O4WY5GE.js";
 import {
