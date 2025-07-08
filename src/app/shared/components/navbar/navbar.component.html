@@ -1,0 +1,35 @@
+<mat-toolbar class="navbar-toolbar">
+  <div class="navbar-left">
+    <span class="logo">MARKETING</span>
+    <nav class="nav-links-desktop">
+      <button mat-button routerLink="/">Inicio</button>
+      <button mat-button routerLink="/projects">Proyectos</button>
+      <button mat-button routerLink="/services">Servicios</button>
+      <button mat-button routerLink="/contact">Contacto</button>
+    </nav>
+  </div>
+  <span class="spacer"></span>
+  <div class="navbar-right">
+    <button mat-flat-button class="contact-button">
+      ESCRÍBENOS <mat-icon>launch</mat-icon>
+    </button>
+    <!-- Hamburguesa SOLO en mobile -->
+    <button mat-icon-button class="menu-button" aria-label="Toggle menu" (click)="menuOpen = true">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<!-- Menú flotante solo para móvil -->
+<div 
+  class="mobile-menu" 
+  *ngIf="menuOpen" 
+  (click)="menuOpen = false"
+>
+  <nav (click)="$event.stopPropagation()">
+    <button mat-button routerLink="/" (click)="menuOpen = false">Inicio</button>
+    <button mat-button routerLink="/projects" (click)="menuOpen = false">Proyectos</button>
+    <button mat-button routerLink="/services" (click)="menuOpen = false">Servicios</button>
+    <button mat-button routerLink="/contact" (click)="menuOpen = false">Contacto</button>
+  </nav>
+</div>

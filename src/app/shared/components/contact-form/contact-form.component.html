@@ -1,0 +1,30 @@
+<section  appAnimateInView [attr.data-animate]="'fade-zoom'" class="contenedor-hablamos">
+    <div class="contact-title-wrap">
+        <h2 class="contact-title-green">¿Hablamos?</h2>
+    </div>
+    <section class="contact-section">
+    <form [formGroup]="form" (ngSubmit)="submitForm()" class="contact-form" autocomplete="off" novalidate>
+        <mat-form-field appearance="outline" class="contact-field">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="name" placeholder="Tu nombre" required>
+        <mat-error *ngIf="form.get('name')?.touched && form.get('name')?.invalid">Introduce tu nombre</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="contact-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="tu@email.com" required>
+        <mat-error *ngIf="form.get('email')?.touched && form.get('email')?.invalid">Email no válido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="contact-field">
+        <mat-label>Mensaje</mat-label>
+        <textarea matInput formControlName="message" rows="4" placeholder="Cuéntanos tu proyecto..." required></textarea>
+        <mat-error *ngIf="form.get('message')?.touched && form.get('message')?.invalid">Mínimo 10 caracteres</mat-error>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" type="submit" class="contact-btn" [disabled]="form.invalid || sent">
+        {{ sent ? '¡Mensaje enviado!' : 'Enviar' }}
+        </button>
+    </form>
+    </section>
+</section>
