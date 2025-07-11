@@ -42,6 +42,8 @@
 }
 .footer-social{
 display: flex;
+    gap: 10px;
+
 }
 .footer-social a {
   color: #224d83;

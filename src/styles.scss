@@ -155,6 +155,23 @@ html, body {
   animation: none !important;
 }
 
+.more-btn:hover, .more-btn:focus {
+  box-shadow: 0 4px 16px #0f940099, 0 1px 6px #0002;
+  background: linear-gradient(95deg, #cfff36 50%, #aaff00 100%) !important;
+   cursor: pointer !important;
+}
+
+.more-btn{
+ background: #bbff00 !important;
+  color: #202020 !important;
+  font-weight: bold;
+  padding: 0 18px !important;
+
+  border-radius: 20px !important;
+  height: 40px;
+  box-shadow: 0 2px 8px #aaff0011;
+}
+
 
 
 

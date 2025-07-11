@@ -5,6 +5,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { AnimateInViewDirective } from '../../directives/animate-in-view.directive';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ContactService } from '../../../core/services/contact.service';
+import { Contact } from '../../../core/models/contact.model';
 
 @Component({
   selector: 'app-contact-form',
@@ -15,23 +18,44 @@ import { AnimateInViewDirective } from '../../directives/animate-in-view.directi
 })
 export class ContactFormComponent {
   private fb = inject(FormBuilder);
+  private contactService = inject(ContactService);
+  
 
- form = this.fb.group({
+  form = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
     email: ['', [Validators.required, Validators.email]],
-    message: ['', [Validators.required, Validators.minLength(10)]]
+    message: ['', [Validators.required, Validators.minLength(40), Validators.maxLength(800)]]
   });
 
   sent = false;
+  error = '';
 
   submitForm() {
-    if (this.form.valid) {
-      this.sent = true;
-      // Aquí iría tu lógica de envío real (API, email, etc.)
-      setTimeout(() => this.sent = false, 4000);
-      this.form.reset();
-    } else {
+    if (this.form.invalid) {
       this.form.markAllAsTouched();
+      return;
     }
-  }
+     const raw = this.form.value;
+
+  // Forzamos que nunca haya null/undefined (recomendado)
+  const data: Contact = {
+    name: raw.name ?? '',
+    email: raw.email ?? '',
+    message: raw.message ?? ''
+  };
+
+     this.contactService.sendMessage(data).subscribe({
+    next: () => {
+      this.sent = true;
+      this.error = '';
+      this.form.reset();
+      setTimeout(() => this.sent = false, 4000);
+    },
+    error: (err: HttpErrorResponse) => {
+      this.error = err.error?.message || 'Error al enviar el mensaje';
+      this.sent = false;
+    }
+  });
 }
+}
+
