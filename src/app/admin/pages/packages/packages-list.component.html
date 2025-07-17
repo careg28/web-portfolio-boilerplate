@@ -1,9 +1,9 @@
 <section class="contenedor-paquetes">
   <div class="packages-header">
     <h2>Paquetes disponibles</h2>
-    <button mat-raised-button class="green-gradient" (click)="createNew()">
+    <button mat-raised-button class="green-gradient function-button" (click)="createNew()">
       <mat-icon>add_circle</mat-icon>
-      Nuevo paquete
+      <span>Nuevo paquete</span>
     </button>
   </div>
 
@@ -29,13 +29,13 @@
         <td>{{ pkg.description }}</td>
         <td>{{ pkg.price | currency:'EUR' }}</td>
         <td>
-          <button mat-raised-button class="green-gradient" (click)="edit(pkg)">
+          <button mat-raised-button class="green-gradient function-button" (click)="edit(pkg)">
             <mat-icon>edit</mat-icon>
-            Editar
+            <span>Editar</span>
           </button>
-          <button mat-raised-button class="delete-package-button" (click)="delete(pkg)">
+          <button mat-raised-button class="delete-package-button function-button" (click)="delete(pkg)">
             <mat-icon>delete</mat-icon>
-            Eliminar
+            <span>Eliminar</span>
           </button>
         </td>
       </tr>

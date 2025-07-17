@@ -36,6 +36,7 @@
 .green-gradient {
   background: linear-gradient(135deg, #aaff00, #88dd00);
   color: #fff;
+  min-width: 92px;
 }
 
 .mat-icon-button .mat-icon {
@@ -51,4 +52,11 @@
 .delete-package-button{
   background: linear-gradient(135deg, #ff4444, #cc0000);
   color: white;
+  width: 92px;
 }
+.function-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
