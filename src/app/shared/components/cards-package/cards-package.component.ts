@@ -1,4 +1,4 @@
-import { CurrencyPipe, NgFor } from '@angular/common';
+import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,7 +16,8 @@ import { PackageService } from '../../../core/services/package.service';
     CurrencyPipe,
     NgFor,
     AnimateInViewDirective,
-    MatIconModule
+    MatIconModule,
+    NgIf
   ],
   templateUrl: './cards-package.component.html',
   styleUrl: './cards-package.component.css'

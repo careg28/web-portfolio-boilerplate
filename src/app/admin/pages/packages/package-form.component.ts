@@ -1,31 +1,42 @@
 import { Component, Input, Output, EventEmitter, OnInit, inject } from '@angular/core';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, Validators, ReactiveFormsModule, FormArray, FormControl } from '@angular/forms';
 import { Package } from '../../../core/models/package.model';
 
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { PackageService } from '../../../core/services/package.service';
 
 @Component({
   selector: 'app-package-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './package-form.component.html',
   styleUrl: './package-form.component.css'
 })
 export class PackageFormComponent implements OnInit {
-  @Input() packageData?: Package; // <-- El paquete a editar, si lo hay
+  @Input() packageData?: Package;
   @Output() saved = new EventEmitter<void>();
   @Output() cancelled = new EventEmitter<void>();
-   private packageService = inject(PackageService);
+  private packageService = inject(PackageService);
 
+  // <-- Aquí el tipado robusto para Angular estricto
   form = inject(FormBuilder).group({
     name: ['', [Validators.required, Validators.maxLength(50)]],
     description: ['', [Validators.required, Validators.maxLength(200)]],
-    price: [0, [Validators.required, Validators.min(0)]]
+    price: [0, [Validators.required, Validators.min(0)]],
+    features: inject(FormBuilder).array<FormControl<string | null>>([])
   });
+
 
   loading = false;
   editMode = false;
@@ -35,18 +46,43 @@ export class PackageFormComponent implements OnInit {
     if (this.packageData) {
       this.editMode = true;
       this.packageId = this.packageData.id;
-      this.form.patchValue(this.packageData);
+      this.form.patchValue({
+        name: this.packageData.name,
+        description: this.packageData.description,
+        price: this.packageData.price
+      });
+      // Inicializa los features si existen
+      const featuresArray = this.form.get('features') as FormArray<FormControl<string | null>>;
+      featuresArray.clear();
+      this.packageData.features?.forEach(feature =>
+        this.addFeature(feature)
+      );
     }
+  }
+
+  // Getter para el FormArray de features, con tipado seguro
+  get features(): FormArray<FormControl<string | null>> {
+    return this.form.get('features') as FormArray<FormControl<string | null>>;
+  }
+
+  addFeature(value: string = '') {
+    this.features.push(new FormControl<string | null>(value, [Validators.required, Validators.maxLength(80)]));
+  }
+
+  removeFeature(index: number) {
+    this.features.removeAt(index);
   }
 
   submit() {
     if (this.form.invalid) return;
     this.loading = true;
     const raw = this.form.value;
+    // ¡Features es un array de (string|null)! Convierte a string[] para el backend:
     const values: Partial<Package> = {
       name: raw.name ?? '',
       description: raw.description ?? '',
-      price: Number(raw.price ?? 0)
+      price: Number(raw.price ?? 0),
+      features: (raw.features ?? []).map((f: string | null) => f ?? '')
     };
     if (this.editMode && this.packageId) {
       this.packageService.update(this.packageId, values).subscribe({
@@ -67,9 +103,7 @@ export class PackageFormComponent implements OnInit {
     }
   }
 
-
   cancel() {
     this.cancelled.emit();
   }
 }
-

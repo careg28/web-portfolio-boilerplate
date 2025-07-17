@@ -1,4 +1,4 @@
-import { CurrencyPipe, NgFor } from '@angular/common';
+import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { AnimateInViewDirective } from '../../../shared/directives/animate-in-view.directive';
@@ -9,7 +9,7 @@ import { Package } from '../../../core/models/package.model';
 
 @Component({
   selector: 'app-cards-package',
-  imports: [MatCard, MatCardModule, CurrencyPipe, NgFor, MatIconModule,RouterLink],
+  imports: [MatCard, MatCardModule, CurrencyPipe, NgFor, MatIconModule,RouterLink,NgIf],
   templateUrl: './cards-package.component.html',
   styleUrl: './cards-package.component.css'
 })
