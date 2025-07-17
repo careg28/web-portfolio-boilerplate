@@ -23,18 +23,26 @@
       </div>
       <ul>
         <li *ngFor="let project of recentProjects">
-          <span>{{ project.name }}</span> <span class="muted">({{ project.date }})</span>
+          <span>{{ project.name }}</span> 
+          <span class="muted">({{ project.date }})</span>
+          <p class="descripcion-proyecto">{{ project.description }}</p>
+        </li>
+        <hr>
+        <li *ngFor="let project of recentProjects">
+          <span>{{ project.name }}</span> 
+          <span class="muted">({{ project.date }})</span>
+          <p class="descripcion-proyecto">{{ project.description }}</p>
         </li>
       </ul>
     </section>
 
     <section class="dashboard-section">
       <div class="section-header">
-        <span>Conversaciones recientes</span>
+        <span>Conversaciones recientes</span>       
         <a mat-stroked-button color="primary" routerLink="/admin/messages">Ver todos</a>
       </div>
       <ul>
-        <li *ngFor="let conv of recentConversations">
+        <li *ngFor="let conv of recentConversations; let i = index">
           <strong>
             {{ conv.user?.name || 'Usuario #'+conv.user_id }}
           </strong>
@@ -44,7 +52,9 @@
           <br>
           <span *ngIf="conv.last_message">{{ conv.last_message.message | slice:0:40 }}...</span>
           <span *ngIf="!conv.last_message">Sin mensajes</span>
+          <hr *ngIf="i < recentConversations.length - 1">
         </li>
+        
       </ul>
     </section>
   </div>

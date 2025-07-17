@@ -9,6 +9,7 @@ import { ConversationService } from '../../../core/services/conversation.service
 import { StatCardComponent } from "../../components/stat-card/stat-card.component";
 import { Conversation } from '../../../core/models/conversation.model';
 import { CardsPackageComponent } from '../../components/cards-package/cards-package.component';
+import { Project } from '../../../core/models/project.model';
 
 
 @Component({
@@ -30,12 +31,11 @@ export class DashboardComponent implements OnInit {
   projectsCount = 0;
   messagesCount = 0;
   recentConversations: Conversation[] = [];
+  projectos : Project[]=[];
 
   // Ejemplo estático
   recentProjects = [
-    { name: 'Landing para Startup', date: '2025-07-13' },
-    { name: 'E-commerce XYZ', date: '2025-07-10' }
-  ];
+    { name: '', date: '', description:'' },];
 
  
 
@@ -46,6 +46,20 @@ export class DashboardComponent implements OnInit {
       error: (err) => console.error('Error al obtener usuario activo', err)
     });
 
+    // Usuario actual
+    this.projectService.getAll().subscribe({
+      next: (proyectos) => {
+        this.projectos = proyectos;
+    
+        this.recentProjects = proyectos.map(p => ({
+           name: p.name,
+           date: p.created_at ? this.formatearFecha(p.created_at) : 'Fecha no disponible',
+           description: p.description ?? 'Sin descripción'
+        }));
+      },
+      error: (err) => console.error('Error al obtener proyectos', err),
+      complete: () => console.log('Proyectos recibidos:', this.recentProjects)
+    });
     
 
     // Usuarios
@@ -63,4 +77,14 @@ export class DashboardComponent implements OnInit {
       .slice(0, 3);
   });
   }
+
+  private formatearFecha(fechaOriginal: string | Date): string {
+    const fecha = new Date(fechaOriginal);
+    return fecha.toLocaleDateString('es-ES', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+  }
+  
 }
