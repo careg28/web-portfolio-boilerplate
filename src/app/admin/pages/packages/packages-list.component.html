@@ -1,0 +1,44 @@
+<section class="contenedor-paquetes">
+  <div class="packages-header">
+    <h2>Paquetes disponibles</h2>
+    <button mat-raised-button class="green-gradient" (click)="createNew()">
+      <mat-icon>add_circle</mat-icon>
+      Nuevo paquete
+    </button>
+  </div>
+
+  <app-package-form
+    *ngIf="showForm"
+    [packageData]="selectedPackage"
+    (saved)="onSaved()"
+    (cancelled)="onCancelled()"
+  ></app-package-form>
+
+  <table *ngIf="!showForm" class="packages-table mat-elevation-z2">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pkg of packages">
+        <td>{{ pkg.name }}</td>
+        <td>{{ pkg.description }}</td>
+        <td>{{ pkg.price | currency:'EUR' }}</td>
+        <td>
+          <button mat-raised-button class="green-gradient" (click)="edit(pkg)">
+            <mat-icon>edit</mat-icon>
+            Editar
+          </button>
+          <button mat-raised-button class="delete-package-button" (click)="delete(pkg)">
+            <mat-icon>delete</mat-icon>
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

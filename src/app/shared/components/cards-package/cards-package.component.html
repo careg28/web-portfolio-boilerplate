@@ -1,0 +1,24 @@
+<section class="contenedor-paquetes" appAnimateInView [attr.data-animate]="'fade-zoom'">
+    <div class="contact-title-wrap">
+      <h2 class="contact-title-green">Nuestros Servicios</h2>
+    </div>
+  
+    <div class="paquete-container">
+      <mat-card class="paquete-card" *ngFor="let pkg of paquetes">
+        <mat-card-header>
+          <mat-card-title>{{ pkg.name }}</mat-card-title>
+          <mat-card-subtitle>{{ pkg.price | currency:'EUR' }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ pkg.description }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button class="btn-contratar">
+            <mat-icon>shopping_cart</mat-icon>
+            <span> Obtener paquete </span>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+  

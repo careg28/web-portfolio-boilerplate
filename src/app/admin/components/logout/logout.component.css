@@ -1,0 +1,9 @@
+
+.boton-desconectar .mat-icon{
+  position: relative!important;
+  top: 5px;
+  margin-right: 5px;
+}
+.boton-desconectar{
+    padding: 15px;
+}
