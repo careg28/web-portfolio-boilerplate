@@ -90,22 +90,20 @@
 /* ----------- CADA CHECK INDIVIDUAL (mobile: sin min-height) ----------- */
 .features-list li {
   display: flex;
-  align-items: flex-start;
-  position: relative;
-  padding-left: 32px;
-  margin-bottom: 8px;
+  align-items: center;
+  gap: 8px;
   font-size: 1rem;
-  line-height: 1.4;
-  word-break: break-word;
+  margin-bottom: 4px;
+  /* fuerza el mismo alineado para icono y texto */
+  line-height: 1.6;
 }
 
-/* ----------- ICONO CHECK AL PRINCIPIO DEL TEXTO ----------- */
-.features-list li mat-icon {
-  position: absolute;
-  left: 0;
-  top: 6px;
-  font-size: 1.4em;
-  color: #50c41c;   /* Verde del check, puedes ajustar si quieres el gradiente */
+.features-list mat-icon {
+  font-size: 22px;           /* tamaño óptimo para lista */
+  vertical-align: middle;    /* importante: centra el ícono verticalmente */
+  margin-bottom: 2px;        /* o prueba margin-top: 2px según el caso */
+  color: #63c41c;            /* o tu color de check */
+  min-width: 22px;           /* mantiene el espacio fijo */
 }
 .features-list li span {
   display: block;
@@ -138,6 +136,9 @@
   font-size: 1rem;
   box-shadow: 0 2px 4px rgba(80,196,28,0.12);
   margin-top: 12px;
+}
+.mat-mdc-card-actions{
+  justify-content: center!important;
 }
 .btn-contratar:hover {
   transform: scale(1.05);
