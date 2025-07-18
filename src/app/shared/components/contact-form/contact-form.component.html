@@ -1,8 +1,8 @@
-<section appAnimateInView [attr.data-animate]="'slide-left'" [style.transition-delay]="(1 * 120) + 'ms'"
-    class="contenedor-hablamos">
-    <div class="contact-title-wrap">
+<section appAnimateInView [attr.data-animate]="'slide-left'" [style.transition-delay]="(1 * 120) + 'ms'"class="contenedor-hablamos">
+    <div *ngIf="estaEnHome" class="contact-title-wrap">
         <h2 class="contact-title-green">¿Hablamos?</h2>
-    </div>
+      </div>
+      
     <section class="contact-section">
         <form [formGroup]="form" (ngSubmit)="submitForm()" class="contact-form" autocomplete="off" novalidate>
 

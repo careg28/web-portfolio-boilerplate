@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ContactService } from '../../../core/services/contact.service';
 import { Contact } from '../../../core/models/contact.model';
 import { CreateContactDto } from '../../../core/dto/create-contact.dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-form',
@@ -20,6 +21,7 @@ import { CreateContactDto } from '../../../core/dto/create-contact.dto';
 export class ContactFormComponent {
   private fb = inject(FormBuilder);
   private contactService = inject(ContactService);
+  private router = inject(Router);
   
 
   form = this.fb.group({
@@ -27,6 +29,10 @@ export class ContactFormComponent {
     email: ['', [Validators.required, Validators.email]],
     message: ['', [Validators.required, Validators.minLength(40), Validators.maxLength(800)]]
   });
+
+  get estaEnHome(): boolean {
+    return this.router.url === '/' || this.router.url === '/home';
+  }
 
   sent = false;
   error = '';

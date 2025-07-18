@@ -1,10 +1,3 @@
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router
-} from "./chunk-SBDZDTFI.js";
-import "./chunk-WCP4ULQJ.js";
-import "./chunk-PY53FG5Q.js";
 import "./chunk-E7PBKAIO.js";
 import {
   animate,
@@ -13,6 +6,13 @@ import {
   transition,
   trigger
 } from "./chunk-SZJPLAKF.js";
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router
+} from "./chunk-SBDZDTFI.js";
+import "./chunk-WCP4ULQJ.js";
+import "./chunk-PY53FG5Q.js";
 import "./chunk-HB2G4QYV.js";
 import {
   CommonModule,

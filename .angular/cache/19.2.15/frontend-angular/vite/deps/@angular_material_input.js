@@ -11,18 +11,7 @@ import {
   MatLabel,
   MatPrefix,
   MatSuffix
-} from "./chunk-6HQ4MY5G.js";
-import {
-  coerceBooleanProperty
-} from "./chunk-AGZFHLKA.js";
-import {
-  getSupportedInputTypes
-} from "./chunk-OCFHRNGF.js";
-import "./chunk-2O4WY5GE.js";
-import {
-  AutofillMonitor,
-  TextFieldModule
-} from "./chunk-2PTM56NO.js";
+} from "./chunk-I3K5AISX.js";
 import {
   FormGroupDirective,
   NgControl,
@@ -30,12 +19,23 @@ import {
   Validators
 } from "./chunk-AQSOLX5H.js";
 import {
+  AutofillMonitor,
+  TextFieldModule
+} from "./chunk-YEBULD76.js";
+import {
+  getSupportedInputTypes
+} from "./chunk-OCFHRNGF.js";
+import {
+  coerceBooleanProperty
+} from "./chunk-AGZFHLKA.js";
+import {
   MatCommonModule,
   _IdGenerator
-} from "./chunk-XDIDDEWJ.js";
-import "./chunk-ZITS4QX3.js";
+} from "./chunk-QLV2IVFF.js";
 import "./chunk-RG4HZ55S.js";
-import "./chunk-KBF5BVRD.js";
+import "./chunk-2O4WY5GE.js";
+import "./chunk-ZITS4QX3.js";
+import "./chunk-ZA6F7UDC.js";
 import "./chunk-JTOQMSBE.js";
 import {
   Platform
