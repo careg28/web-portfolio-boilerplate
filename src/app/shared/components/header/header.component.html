@@ -14,7 +14,7 @@
   <div appAnimateInView [attr.data-animate]="'fade-zoom'"  class="hero-text">
     <h1>Impulsa tu presencia digital</h1>
     <p>Soluciones web y marketing <strong>personalizadas</strong> para empresas modernas.</p>
-    <button mat-raised-button color="primary" class="cta-btn" routerLink="/contact">
+    <button mat-raised-button color="primary" class="cta-btn" [routerLink]="['contacto']" routerLinkActive="router-link-active">
       <span>¡Solicita tu presupuesto!</span>
       <mat-icon>arrow_forward</mat-icon>
     </button>

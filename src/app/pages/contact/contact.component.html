@@ -8,7 +8,7 @@
   
   <mat-divider></mat-divider>
   
-  <section class="canales-contacto">
+  <section class="canales-contacto" appAnimateInView [attr.data-animate]="'fade-zoom'">
     <div class="wrap">
       <h2>Otras formas de contacto</h2>
       <div class="grid-canales">
@@ -55,7 +55,7 @@
   <mat-divider></mat-divider>
   
   <section class="formulario-contacto">
-    <div class="wrap">
+    <div class="wrap"appAnimateInView [attr.data-animate]="'fade-zoom'">
       <h2>Formulario directo</h2>
       <p>Completa el siguiente formulario y nos pondremos en contacto contigo muy pronto.</p>   
         <app-contact-form></app-contact-form>

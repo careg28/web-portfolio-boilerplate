@@ -3,7 +3,7 @@
     background: #f9fafe;
     position: relative;
     text-align: center;
-    padding: 4rem 1rem 2rem;
+    padding: 2rem 1rem 2rem;
   }
   
   .intro-proceso .wave-top {
@@ -115,7 +115,7 @@
   /* === BENEFICIOS === */
 .beneficios {
     background: #f6f7fc;
-    padding: 4rem 1rem;
+    padding: 0rem 1rem;
     text-align: center;
   }
   
@@ -181,6 +181,7 @@
     justify-content: center;
     align-items: center;
   }
+  
 
   
   
