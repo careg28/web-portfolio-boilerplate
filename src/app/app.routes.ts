@@ -9,10 +9,12 @@ export const routes: Routes = [
       import('./layouts/public-layout/public-layout.component').then(m => m.PublicLayoutComponent),
     children: [
       { path: '', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent), pathMatch: 'full' },
-      { path: 'projects', loadComponent: () => import('./pages/projects/projects.component').then(m => m.ProjectsComponent) },
-      { path: 'services', loadComponent: () => import('./pages/services/services.component').then(m => m.ServicesComponent) },
-      { path: 'contact', loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent) },
+      { path: 'projectos', loadComponent: () => import('./pages/projects/projects.component').then(m => m.ProjectsComponent) },
+      { path: 'servicios', loadComponent: () => import('./pages/services/services.component').then(m => m.ServicesComponent) },
+      { path: 'contacto', loadComponent: () => import('./pages/contact/contact.component').then(m => m.ContactComponent) },
       { path: 'login', loadComponent: () => import('./shared/components/login/login.component').then(m => m.LoginComponent) },
+      { path: 'nuestro-proceso', loadComponent: () => import('./pages/nuestro-proceso/nuestro-proceso.component').then(m => m.NuestroProcesoComponent) }
+
     ]
   },
   // Rutas admin protegidas

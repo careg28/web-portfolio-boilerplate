@@ -41,16 +41,7 @@
   margin-right: 12px;
 }
 
-.contact-button {
-  background: #bbff00 !important;
-  color: #202020 !important;
-  font-weight: bold;
-  padding: 0 18px !important;
-  margin-right: 8px;
-  border-radius: 20px !important;
-  height: 40px;
-  box-shadow: 0 2px 8px #aaff0011;
-}
+
 
 /* Botón hamburguesa visible solo en móvil */
 .menu-button {

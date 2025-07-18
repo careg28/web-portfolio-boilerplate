@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { SwadowSeparatorComponent } from "../../shared/components/swadow-separator/swadow-separator.component";
 
 @Component({
   selector: 'app-services',
-  imports: [],
+  imports: [SwadowSeparatorComponent],
   templateUrl: './services.component.html',
   styleUrl: './services.component.css'
 })
